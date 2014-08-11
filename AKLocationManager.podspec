@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.homepage     = 'https://github.com/ideaismobile/AKLocationManager'
   s.license      = 'MIT'
   s.author       = { "thiagoperes" => "thiago@appkraft.net" }
-  s.source       = { :git => 'https://github.com/ideaismobile/AKLocationManager.git', :tag => '1.0.3' }
+  s.source       = { :git => 'https://github.com/anylei/AKLocationManager.git' }
   s.platform     = :ios
   s.source_files = 'Classes', 'Classes/**/*.{h,m}'
   s.framework  = 'CoreLocation'
