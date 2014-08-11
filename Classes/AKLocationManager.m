@@ -136,16 +136,7 @@
     
 - (BOOL)isValidLocation:(CLLocation*)location
     {
-        return (location.horizontalAccuracy <= _desiredAccuracy &&
-                //
-                // According to CLLocationManager Delegate's documentation:
-                //
-                // "If updates were deferred or if multiple locations arrived
-                // before they could be delivered, the array may contain additional entries."
-                //
-                // So we check when they were made
-                //
-                abs([location.timestamp timeIntervalSinceNow]) < 15.0);
+        return abs([location.timestamp timeIntervalSinceNow]) < 15.0;
     }
     
 - (void)didFinishUpdatingLocation:(CLLocationManager *)manager location:(CLLocation *)location
@@ -172,18 +163,6 @@
             {
                 [self didFinishUpdatingLocation:manager location:loc];
             }
-        }
-    }
-    
-- (void)locationManager:(CLLocationManager *)manager
-    didUpdateToLocation:(CLLocation *)newLocation
-           fromLocation:(CLLocation *)oldLocation
-    {
-        AKLLog(@"\n Did update location:\n %@\n Altitude: %f\n Vertical accuracy: %f\n\n", newLocation, newLocation.altitude, newLocation.verticalAccuracy);
-        
-        if ([self isValidLocation:newLocation])
-        {
-            [self didFinishUpdatingLocation:manager location:newLocation];
         }
     }
     
